@@ -37,9 +37,6 @@ function GoodJSON (GoodObject) {
                         $("[xsub=" + id + "]").hide();
                     }
 
-
-                    function ShrinkSubs()
-
                 });
             }
             }
