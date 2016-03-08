@@ -22,22 +22,48 @@ function GoodJSON (GoodObject) {
                             },
             expand: function () {
                 $(".expand").bind("click",function () {
-
                     var id = $(this).attr("xguid");
-                    console.log($(this).attr("xopen"));
+                   // console.log($(this).attr("xopen"));
                     if ($(this).attr("xopen") === "false") {
                         $(this).empty().text("remove_circle");
                         $(this).attr("xopen", "true");
-                        console.log(id);
+                       // console.log(id);
                         $("[xsub=" + id + "]").show();
                     } else {
                         $(this).empty().text("add_circle");
                         $(this).attr("xopen", "false");
-                        console.log(id);
-                        $("[xsub=" + id + "]").hide();
+                        //console.log(id);
+                        Display.Buttons.xSub.hide(id);
+                    }
+                });
+
+
+            },
+
+            xSub: {
+                hide: function (id) {
+                    $("[xsub=" + id + "]").hide();
+                    var sub = $("[xsub=" + id + "]").find("div[xguid]");
+                    $(sub).find(".expand").empty().text("add_circle").attr("xopen", "false");
+                    for (var o of sub){
+                        var oid = $(o).attr("xguid");
+                        //console.log(oid);
+                        if($("[xsub=" + oid + "]").length > 0){
+                            Display.Buttons.xSub.hide(oid);
+                        }
                     }
 
-                });
+
+
+                },
+                show: function (id) {
+
+
+                },
+                showall: function (id) {
+
+
+                }
             }
             }
         };
@@ -55,10 +81,10 @@ function GoodJSON (GoodObject) {
                     //VALUE (NUMBER, STRING, ETC)
                     var $temp = $('<div />',{html:$("gjtemplate sub").html()});
                     console.log("SHIFT: "+ shift);
-                    $temp.find(".sub").append($("gjtemplate value").html());
+                    $temp.find(".GJsub").append($("gjtemplate value").html());
                     $temp.find(".GJcard").attr("xguid",guid);
-                    $temp.find(".sub").attr('style',"width:"+ shift + "%;");
-                    $temp.find(".sub").attr('xsub',sub);
+                    $temp.find(".GJsub").attr('style',"width:"+ shift + "%;");
+                    $temp.find(".GJsub").attr('xsub',sub);
                     if (bgColorAdd < 45){
                         $temp.find(".GJcard").css({"background-color": "rgb(" + bgColorAdd + ", " + bgColorAdd + "," + bgColorAdd + ")", "color": "rgb(221,221,221)"});
                     } else {
@@ -73,10 +99,10 @@ function GoodJSON (GoodObject) {
                     if (!Array.isArray(subitem)){
                         //CLASS OR OBJECT
                         var $temp = $('<div />',{html:$("gjtemplate sub").html()});
-                        $temp.find(".sub").attr("style","width:"+ shift + "%;");
-                        $temp.find(".sub").append($("gjtemplate object").html());
+                        $temp.find(".GJsub").attr("style","width:"+ shift + "%;");
+                        $temp.find(".GJsub").append($("gjtemplate object").html());
 
-                        $temp.find(".sub").attr("xsub",sub);
+                        $temp.find(".GJsub").attr("xsub",sub);
                         $temp.find(".GJcard").attr("xguid",guid);
                         $temp.find(".expand").attr("xguid",guid);
 
@@ -93,9 +119,9 @@ function GoodJSON (GoodObject) {
 
                         //ARRAY
                         var $temp = $('<div />',{html:$("gjtemplate sub").html()});
-                        $temp.find(".sub").attr("style","width:"+ shift + "%;");
-                        $temp.find(".sub").append($("gjtemplate object").html());
-                        $temp.find(".sub").attr("xsub",sub);
+                        $temp.find(".GJsub").attr("style","width:"+ shift + "%;");
+                        $temp.find(".GJsub").append($("gjtemplate object").html());
+                        $temp.find(".GJsub").attr("xsub",sub);
                         $temp.find(".GJcard").attr("xguid",guid);
                         $temp.find(".expand").attr("xguid",guid);
                         if (bgColorAdd < 45){
@@ -114,10 +140,10 @@ function GoodJSON (GoodObject) {
                         //NULL
                         var $temp = $('<div />',{html:$("gjtemplate sub").html()});
                         console.log("SHIFT: "+ shift);
-                        $temp.find(".sub").attr("style","width:"+ shift + "%;");
-                        $temp.find(".sub").append($("gjtemplate value").html());
+                        $temp.find(".GJsub").attr("style","width:"+ shift + "%;");
+                        $temp.find(".GJsub").append($("gjtemplate value").html());
 
-                        $temp.find(".sub").attr("xsub",sub);
+                        $temp.find(".GJsub").attr("xsub",sub);
                         $temp.find(".GJcard").attr("xguid",guid);
 
                         if (bgColorAdd < 45){
@@ -161,7 +187,7 @@ function GoodJSON (GoodObject) {
                     Display.Object(Object,guid);
                 }
             }
-            $(".sub").hide();
+            $(".GJsub").hide();
             Display.Buttons.all();
         },
         GUID: function () {
