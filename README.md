@@ -6,7 +6,6 @@ I couldn't find one worth my while.... So I started building my own jQuery JSON 
 
 <b>View Demo Here: http://clandestine8.github.io/Good-JSON-Editor-jQuery/test/demo.html </b>
 
-
 This is a jquery plugin, include jquery before you include this js library.
 
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
@@ -51,3 +50,4 @@ After you're done editing everything you wish, you can output a JSON Object or A
     var JSONString2 = json.goodJSON('stringify'); // just a streight ugly json string
     var JSONString = json.goodJSON();
     var JSONObject = json.goodJSON('objectify');
+
