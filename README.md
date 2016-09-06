@@ -6,4 +6,4 @@ I couldn't find one worth my while.... So I started building my own jQuery JSON 
 
 Still Working. Please Come Back Shortly. ANY IDEAS? Let Me Know!
 
-<b>View Demo Here: http://clandestine8.github.io/Good-JSON-Editor-jQuery/Dev/test.html </b>
+<b>View Demo Here: http://clandestine8.github.io/Good-JSON-Editor-jQuery/lib/test.html </b>
